@@ -1,11 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman HOME</title>
-</head>
-<body>
-    Testing halaman home
-</body>
-</html>
+<h1>Testing Halaman HOME</h1>
