@@ -24,4 +24,4 @@
 <body>
     <?php include_once 'navbar.php' ?>
     <main style="height: 100vh;">
-        <div class="container">
+        <div class="container mt-4">

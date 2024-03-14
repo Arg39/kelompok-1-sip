@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto fw-semibold">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?= BASE_URL; ?>">
+          <a class="nav-link" href="<?= BASE_URL; ?>">
             <i class="bi bi-house-door-fill me-1"></i>
             Home
           </a>
