@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p>&copy; 2021 Perpusku</p>
+                <p>&copy; 2024 Perpusku</p>
             </div>
         </div>
     </div>

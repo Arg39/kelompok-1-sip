@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="#">
       <img src="<?= BASE_URL; ?>img/logo.jpg" alt="Logo" width="27"
         class="d-inline-block align-text-center rounded-circle me-2">
-      <span class="fw-bold">Perpus-Ku</span>
+      <span class="fw-semibold">Perpus-Ku</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-2"></i>Master Anggota</a></li>
             <li><a class="dropdown-item" href="<?= BASE_URL; ?>rak"><i class="bi bi-hdd-rack-fill me-2"></i>Master Lokasi Rak</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL; ?>rak"><i class="bi bi-journal-bookmark-fill me-2"></i>Master Kategori Buku</a></li>
             <li><a class="dropdown-item" href="#"><i class="bi bi-book-half me-2"></i>Master Buku</a></li>
             <li>
               <hr class="dropdown-divider">
@@ -43,7 +44,7 @@
         </li>
       </ul>
       <div class="btn-group">
-        <a href="#" class="btn btn-sm btn-outline-light fw-semibold">
+        <a href="#" class="btn btn-sm btn-outline-danger fw-semibold">
           <i class="bi bi-box-arrow-in-left me-1"></i>
           Sign Out
         </a>
