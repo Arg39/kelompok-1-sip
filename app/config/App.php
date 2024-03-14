@@ -39,9 +39,18 @@ class App
     // Make a method to parse the URL with Filter Sanitize URL
     public function parseURL()
     {
-        if (isset($_GET['url'])) {
-            $url = rtrim($_GET['url'], '/');
+        // Check if the request URI is set
+        if (isset($_SERVER['REQUEST_URI'])) {
+            // Get the path from the request URI
+            $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+            // Remove the base directory if present (e.g., /public)
+            $base_dir = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+            $url = str_replace($base_dir, '', $url);
+            // Remove leading and trailing slashes
+            $url = trim($url, '/');
+            // Sanitize the URL
             $url = filter_var($url, FILTER_SANITIZE_URL);
+            // Explode the URL into an array
             $url = explode('/', $url);
             return $url;
         }
