@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2024 at 01:15 PM
+-- Generation Time: Mar 14, 2024 at 04:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -49,7 +49,19 @@ CREATE TABLE `buku` (
   `isbn` varchar(45) NOT NULL,
   `pengarang` varchar(128) NOT NULL,
   `penerbit` varchar(128) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
   `kode_rak` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori`
+--
+
+CREATE TABLE `kategori` (
+  `id` int(11) NOT NULL,
+  `nama_kategori` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -106,6 +118,14 @@ CREATE TABLE `rak` (
   `lokasi` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `rak`
+--
+
+INSERT INTO `rak` (`kode`, `lokasi`) VALUES
+('R002', 'Lantai 2'),
+('R003', 'Lantai 3');
+
 -- --------------------------------------------------------
 
 --
@@ -143,7 +163,14 @@ ALTER TABLE `anggota`
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `kode_rak` (`kode_rak`);
+  ADD KEY `kode_rak` (`kode_rak`),
+  ADD KEY `id_kategori` (`id_kategori`);
+
+--
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `peminjaman`
@@ -205,6 +232,12 @@ ALTER TABLE `buku`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
@@ -230,7 +263,8 @@ ALTER TABLE `petugas`
 -- Constraints for table `buku`
 --
 ALTER TABLE `buku`
-  ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`kode_rak`) REFERENCES `rak` (`kode`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`kode_rak`) REFERENCES `rak` (`kode`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `peminjaman`
