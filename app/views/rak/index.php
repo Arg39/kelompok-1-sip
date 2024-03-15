@@ -24,7 +24,6 @@
                     class="btn btn-sm btn-primary float-end fw-semibold"><i class="bi bi-plus-lg me-1"></i>Tambah
                     Data</button>
             </div>
-            <?php include_once 'modalTambah.php' ?>
         </div>
     </div>
     <div class="card-body">
@@ -52,7 +51,8 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a href="<?= BASE_URL; ?>rak/edit/<?= $rak['kode']; ?>" class="btn btn-sm btn-warning">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-warning edit_rak"
+                                    data-kode="<?= $rak['kode']; ?>" data-bs-toggle="modal" data-bs-target="#editModal">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <!-- Make trash button with confirm alert in js onclick -->
@@ -68,3 +68,7 @@
         </table>
     </div>
 </div>
+<!-- Modal Tambah Data -->
+<?php include_once 'modalTambah.php' ?>
+<!-- Modal Edit Data -->
+<?php include_once 'modalEdit.php' ?>
