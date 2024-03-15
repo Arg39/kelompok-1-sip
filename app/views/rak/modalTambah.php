@@ -11,11 +11,11 @@
                 <div class="modal-body">
                     <div class="form-group mb-3">
                         <label for="kode">Kode Rak</label>
-                        <input type="text" class="form-control kode" id="kode" name="kode">
+                        <input type="text" class="form-control" id="kode" name="kode">
                     </div>
                     <div class="form-group">
                         <label for="lokasi">Lokasi</label>
-                        <input type="text" class="form-control lokasi" id="lokasi" name="lokasi">
+                        <input type="text" class="form-control" id="lokasi" name="lokasi">
                     </div>
                 </div>
                 <div class="modal-footer">
