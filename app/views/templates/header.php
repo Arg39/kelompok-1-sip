@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -23,5 +23,5 @@
 
 <body>
     <?php include_once 'navbar.php' ?>
-    <main style="height: 100vh;">
+    <main>
         <div class="container mt-4">
