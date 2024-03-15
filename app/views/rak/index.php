@@ -19,9 +19,10 @@
                 <h5 class="card-title">Data Rak</h5>
             </div>
             <div class="col-md-6">
-                <a href="<?= BASE_URL; ?>rak/tambah" class="btn btn-sm btn-primary float-end fw-semibold"><i
-                        class="bi bi-plus-lg me-1"></i>Tambah Data</a>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#tambahModal"
+                    class="btn btn-sm btn-primary float-end fw-semibold"><i class="bi bi-plus-lg me-1"></i>Tambah Data</button>
             </div>
+            <?php include_once 'modalTambah.php' ?>
         </div>
     </div>
     <div class="card-body">

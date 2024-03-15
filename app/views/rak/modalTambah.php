@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="<?= BASE_URL; ?>rak/tambah">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="tambahModalLabel">Tambah Data Rak</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label for="kode">Kode Rak</label>
+                        <input type="text" class="form-control" id="kode" name="kode">
+                    </div>
+                    <div class="form-group">
+                        <label for="lokasi">Lokasi</label>
+                        <input type="text" class="form-control" id="lokasi" name="lokasi">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Tambah Data</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
