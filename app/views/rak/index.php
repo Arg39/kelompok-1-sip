@@ -12,6 +12,7 @@
     </div>
 </div>
 <hr>
+<?= $this->flash->getFlashMessage(); ?>
 <div class="card shadow mt-4">
     <div class="card-header">
         <div class="row">
@@ -20,7 +21,8 @@
             </div>
             <div class="col-md-6">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#tambahModal"
-                    class="btn btn-sm btn-primary float-end fw-semibold"><i class="bi bi-plus-lg me-1"></i>Tambah Data</button>
+                    class="btn btn-sm btn-primary float-end fw-semibold"><i class="bi bi-plus-lg me-1"></i>Tambah
+                    Data</button>
             </div>
             <?php include_once 'modalTambah.php' ?>
         </div>
@@ -53,7 +55,9 @@
                                 <a href="<?= BASE_URL; ?>rak/edit/<?= $rak['kode']; ?>" class="btn btn-sm btn-warning">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a href="<?= BASE_URL; ?>rak/hapus/<?= $rak['kode']; ?>" class="btn btn-sm btn-danger">
+                                <!-- Make trash button with confirm alert in js onclick -->
+                                <a href="<?= BASE_URL; ?>rak/delete/<?= $rak['kode']; ?>" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </div>

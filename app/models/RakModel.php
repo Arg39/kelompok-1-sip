@@ -19,9 +19,10 @@ class RakModel
     // tambahDataRak
     public function tambahDataRak($data)
     {
-        $query = "INSERT INTO rak VALUES ('', :nama_rak)";
+        $query = "INSERT INTO rak VALUES (:kode, :lokasi)";
         $this->db->query($query);
-        $this->db->bind('nama_rak', $data['nama_rak']);
+        $this->db->bind('kode', $data['kode']);
+        $this->db->bind('lokasi', $data['lokasi']);
         $this->db->execute();
         return $this->db->rowCount();
     }

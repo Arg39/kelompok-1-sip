@@ -1,7 +1,8 @@
 <!-- Modal -->
-<div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="<?= BASE_URL; ?>rak/tambah">
+<div class="modal fade " id="tambahModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    aria-labelledby="tambahModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form action="<?= BASE_URL; ?>rak/tambah" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="tambahModalLabel">Tambah Data Rak</h1>
@@ -19,7 +20,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Tambah Data</button>
+                    <button type="submit" class="btn btn-primary">Tambah Data</button>
                 </div>
             </div>
         </form>

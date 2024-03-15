@@ -1,10 +1,11 @@
 </div>
 </main>
-<footer>
+<hr class="mt-5">
+<footer class="mt-2">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p>&copy; 2024 Perpusku</p>
+                <p>&copy; <?= date('Y'); ?> Perpusku</p>
             </div>
         </div>
     </div>
