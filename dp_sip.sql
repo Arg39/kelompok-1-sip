@@ -63,8 +63,8 @@ CREATE TABLE `buku` (
 --
 
 CREATE TABLE `kategori` (
-  `id` int(11) NOT NULL,
-  `nama_kategori` varchar(5) NOT NULL
+  `id` varchar(5) NOT NULL,
+  `nama_kategori` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -174,7 +174,7 @@ ALTER TABLE `buku`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id`);
-
+  
 --
 -- Indexes for table `peminjaman`
 --
@@ -233,12 +233,6 @@ ALTER TABLE `anggota`
 --
 ALTER TABLE `buku`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kategori`
---
-ALTER TABLE `kategori`
-  MODIFY `id` varchar(5) NOT NULL;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
