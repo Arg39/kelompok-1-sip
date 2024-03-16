@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `dp_sip`
 --
+CREATE DATABASE IF NOT EXISTS `dp_sip` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+USE `dp_sip`;
 
 -- --------------------------------------------------------
 
@@ -49,7 +52,7 @@ CREATE TABLE `buku` (
   `isbn` varchar(45) NOT NULL,
   `pengarang` varchar(128) NOT NULL,
   `penerbit` varchar(128) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
+  `id_kategori` varchar(5) NOT NULL,
   `kode_rak` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -61,7 +64,7 @@ CREATE TABLE `buku` (
 
 CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
-  `nama_kategori` varchar(128) NOT NULL
+  `nama_kategori` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -235,7 +238,7 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` varchar(5) NOT NULL;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
