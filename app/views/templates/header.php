@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $data['title']; ?>
+        <?= $data['title']; ?> | Perpusku
     </title>
     <link rel="stylesheet" href="<?= BASE_URL; ?>css/bootstrap.min.css">
     <link rel="shortcut icon" href="<?= BASE_URL; ?>img/logo.jpg" type="image/x-icon">
@@ -18,7 +18,10 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
-
+    
+    <script>
+        var BASE_URL = '<?php echo BASE_URL; ?>';
+    </script>
 </head>
 
 <body>
