@@ -28,8 +28,7 @@
                         </div>
                         <div class="col-md-2">
                             <label for="tahun_terbit" class="form-label">Tahun Terbit</label>
-                            <input type="number" name="tahun_terbit" min="1900" max="2099" step="1" value="2016"
-                                class="form-control" id="tahun_terbit">
+                            <input type="number" name="tahun_terbit" min="1900" max="2099" step="1" value="2016" class="form-control" id="tahun_terbit">
                         </div>
                         <div class="col-md-5">
                             <label for="isbn" class="form-label">ISBN</label>

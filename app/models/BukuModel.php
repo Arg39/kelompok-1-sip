@@ -24,10 +24,18 @@ class BukuModel
         return $this->db->resultSingle();
     }
 
+    // getBukuById with join table kategori & rak
+    public function getBukuByIdJoin($id)
+    {
+        $this->db->query('SELECT buku.*, kategori.nama_kategori as kategori, rak.lokasi as lokasi FROM ' . $this->table . ' INNER JOIN kategori ON buku.id_kategori = kategori.id INNER JOIN rak ON buku.kode_rak = rak.kode WHERE buku.id=:id');
+        $this->db->bind('id', $id);
+        return $this->db->resultSingle();
+    }
+
     // tambahDataBuku
     public function tambahDataBuku($data)
     {
-        $query = "INSERT INTO buku VALUES (:id, :judul, :pengarang, :jumlah, :penerbit, :tahun_terbit, :isbn, :id_kategori, :kode_rak, :gambar)";
+        $query = "INSERT INTO buku VALUES (:id, :judul, :tahun_terbit, :jumlah, :isbn, :pengarang, :penerbit, :id_kategori, :kode_rak, :gambar)";
         $this->db->query($query);
         $this->db->bind('id', null);
         $this->db->bind('judul', $data['judul']);

@@ -73,4 +73,9 @@ class Buku extends Controller
             exit;
         }
     }
+
+    // Detail Data Buku
+    public function detail() {
+        echo json_encode($this->model('BukuModel')->getBukuByIdJoin($_POST['id']));
+    }
 }

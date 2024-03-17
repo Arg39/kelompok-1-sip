@@ -52,8 +52,8 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <!-- detail button -->
-                                    <a href="<?= BASE_URL; ?>buku/detail/<?= $buku['id']; ?>"
-                                        class="btn btn-sm btn-primary">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-primary detail_buku"
+                                        data-id="<?= $buku['id']; ?>" data-bs-toggle="modal" data-bs-target="#detailModal">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                     <a href="javascript:void(0)" class="btn btn-sm btn-warning edit_buku"
@@ -79,3 +79,5 @@
 </div>
 <!-- Modal Tambah Data -->
 <?php include_once 'modalTambah.php' ?>
+<!-- Modal Detail Data -->
+<?php include_once 'modalDetail.php' ?>
