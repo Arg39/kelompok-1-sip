@@ -16,10 +16,17 @@ class TransPeminjamanModel
         return $this->db->resultSingle();
     }
 
-    public function getDetailPeminjaman($id)
+    public function getDetailPeminjaman($id_peminjaman)
     {
-        $this->db->query('SELECT p.id_peminjaman, t.id AS id_buku, t.judul FROM ' . $this->table . ' AS p INNER JOIN buku AS t ON p.id_buku = t.id WHERE p.id_peminjaman = :id');
-        $this->db->bind(':id', $id);
+        $this->db->query('SELECT trans_peminjaman.*, peminjaman.*, buku.*, anggota.* FROM ' . $this->table . ' INNER JOIN buku ON trans_peminjaman.id_buku = buku.id INNER JOIN peminjaman ON trans_peminjaman.id_peminjaman = peminjaman.id INNER JOIN anggota ON peminjaman.anggota_id = anggota.id WHERE trans_peminjaman.id_peminjaman = :id_peminjaman');
+        $this->db->bind(':id_peminjaman', $id_peminjaman);
         return $this->db->resultSingle();
+    }
+
+    public function getBukuDipinjam($id_peminjaman)
+    {
+        $this->db->query('SELECT trans_peminjaman.*, peminjaman.*, buku.* FROM ' . $this->table . ' INNER JOIN buku ON trans_peminjaman.id_buku = buku.id INNER JOIN peminjaman ON trans_peminjaman.id_peminjaman = peminjaman.id WHERE trans_peminjaman.id_peminjaman = :id_peminjaman');
+        $this->db->bind(':id_peminjaman', $id_peminjaman);
+        return $this->db->resultAll();
     }
 }
