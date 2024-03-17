@@ -8,6 +8,8 @@
         <?= $data['title']; ?>
     </title>
     <link rel="stylesheet" href="<?= BASE_URL; ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>css/select2.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>css/select2-bootstrap5.min.css">
     <link rel="shortcut icon" href="<?= BASE_URL; ?>img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -19,7 +21,7 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
-    
+
     <script>
         const BASE_URL = '<?= BASE_URL; ?>';
     </script>

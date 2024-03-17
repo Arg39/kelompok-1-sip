@@ -2,6 +2,10 @@
 class Home extends Controller
 {
     public function index() {
+        if (!isset($_SESSION['user'])) {
+            header("Location: " . BASE_URL . "login");
+            exit();
+        }
         $data = [
             'title' => 'Home | Perpusku',
         ];

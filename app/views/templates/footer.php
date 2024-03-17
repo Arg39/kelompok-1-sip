@@ -14,6 +14,7 @@
 <script src="<?= BASE_URL; ?>js/popper.min.js"></script>
 <script src="<?= BASE_URL; ?>js/bootstrap.min.js"></script>
 <script src="<?= BASE_URL; ?>js/bootstrap.min.js.map"></script>
+<script src="<?= BASE_URL; ?>js/select2-full.min.js"></script>
 <script src="<?= BASE_URL; ?>js/script.js"></script>
 <?php if (strpos($_SERVER['REQUEST_URI'], '/buku') !== false) : ?>
     <script src="<?= BASE_URL; ?>js/buku.js"></script>
