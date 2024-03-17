@@ -12,7 +12,10 @@ class PeminjamanModel
 
     public function getAllPeminjaman()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query('SELECT p.*, a.nama AS nama_anggota, pt.nama AS nama_petugas 
+                         FROM ' . $this->table . ' p
+                         JOIN anggota a ON p.anggota_id = a.id
+                         JOIN petugas pt ON p.petugas_id = pt.id');
         return $this->db->resultAll();
     }
     public function ubah($id)
