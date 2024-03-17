@@ -1,13 +1,28 @@
 // Make image preview in modalTambah buku when upload image
-function previewImage() {
-  const cover = document.querySelector("#gambar");
-  const imgPreview = document.querySelector("#preview");
+function previewImageTambah() {
+  const cover = document.querySelector(".gambarTambah");
+  const imgPreview = document.querySelector(".previewTambah");
 
   const fileCover = new FileReader();
   fileCover.readAsDataURL(cover.files[0]);
 
   fileCover.onload = function (e) {
     imgPreview.src = e.target.result;
+  };
+}
+
+// Make image preview in modalTambah buku when upload image
+function previewImageEdit() {
+  const cover = document.querySelector(".gambarEdit");
+  const imgPreview = document.querySelector(".previewEdit");
+  console.log(cover);
+
+  const fileCover = new FileReader();
+  fileCover.readAsDataURL(cover.files[0]);
+
+  fileCover.onload = function (e) {
+    imgPreview.src = e.target.result;
+    console.log(e.target.result);
   };
 }
 
@@ -43,7 +58,7 @@ $(document).on("click", ".detail_buku", function () {
   $(".jumlah").val("");
   $(".kode_rak").val("");
   $(".id_kategori").val("");
-  $(".gambar").attr("src", BASE_URL + "uploads/default.jpg");
+  $(".previewDetail").attr("src", BASE_URL + "uploads/default.svg");
   $.ajax({
     method: "post",
     datatype: "json",
@@ -52,7 +67,6 @@ $(document).on("click", ".detail_buku", function () {
     success: async function (response) {
       // send to value in input
       let data = await JSON.parse(response);
-      console.log(data);
       $(".judul").val(data.judul);
       $(".pengarang").val(data.pengarang);
       $(".penerbit").val(data.penerbit);
@@ -61,7 +75,45 @@ $(document).on("click", ".detail_buku", function () {
       $(".jumlah").val(data.jumlah);
       $(".kode_rak").val(data.lokasi);
       $(".id_kategori").val(data.kategori);
-      $(".gambar").attr("src", BASE_URL + "uploads/" + data.gambar);
+      $(".previewDetail").attr("src", BASE_URL + "uploads/" + data.gambar);
+    },
+    error: function (response) {
+      console.log(response);
+    },
+  });
+});
+
+// Display data in modal when clicked edit in data buku
+$(document).on("click", ".edit_buku", function () {
+  let id = $(this).data("id");
+  $(".judul").val("");
+  $(".pengarang").val("");
+  $(".penerbit").val("");
+  $(".tahun_terbit").val("");
+  $(".isbn").val("");
+  $(".jumlah").val("");
+  $(".kode_rak").val("");
+  $(".id_kategori").val("");
+  $(".gambar_lama").val("");
+  $(".previewEdit").attr("src", BASE_URL + "uploads/default.svg");
+  $.ajax({
+    method: "post",
+    datatype: "json",
+    data: { id: id },
+    url: BASE_URL + "buku/edit",
+    success: async function (response) {
+      let data = await JSON.parse(response);
+      $(".id").val(data.id);
+      $(".judul").val(data.judul);
+      $(".pengarang").val(data.pengarang);
+      $(".penerbit").val(data.penerbit);
+      $(".tahun_terbit").val(data.tahun_terbit);
+      $(".isbn").val(data.isbn);
+      $(".jumlah").val(data.jumlah);
+      $(".kode_rak").val(data.kode_rak);
+      $(".id_kategori").val(data.id_kategori);
+      $(".gambar_lama").val(data.gambar);
+      $(".previewEdit").attr("src", BASE_URL + "uploads/" + data.gambar);
     },
     error: function (response) {
       console.log(response);

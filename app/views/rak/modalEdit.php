@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label for="lokasi">Lokasi</label>
-                        <input type="text" class="form-control lokasi" id="lokasi" name="lokasi" value="">
+                        <input type="text" class="form-control lokasi" required id="lokasi" name="lokasi" value="">
                     </div>
                 </div>
                 <div class="modal-footer">

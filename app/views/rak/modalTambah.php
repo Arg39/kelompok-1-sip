@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="lokasi">Lokasi</label>
-                        <input type="text" class="form-control" id="lokasi" name="lokasi">
+                        <input type="text" class="form-control" required id="lokasi" name="lokasi">
                     </div>
                 </div>
                 <div class="modal-footer">

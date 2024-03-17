@@ -81,3 +81,5 @@
 <?php include_once 'modalTambah.php' ?>
 <!-- Modal Detail Data -->
 <?php include_once 'modalDetail.php' ?>
+<!-- Modal Edit Data -->
+<?php include_once 'modalEdit.php' ?>

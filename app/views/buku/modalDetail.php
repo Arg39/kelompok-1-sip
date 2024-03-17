@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="row g-3">
                     <div class="col-md-3 text-center">
-                        <img src="<?= BASE_URL; ?>uploads/default.svg" class="img-thumbnail gambar" id="preview" alt="Preview"
+                        <img src="<?= BASE_URL; ?>uploads/default.svg" class="img-thumbnail previewDetail" id="preview" alt="Preview"
                             style="height: 150px; object-fit: cover; object-position: top;">
                     </div>
                     <div class="col-md-3">
