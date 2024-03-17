@@ -16,5 +16,4 @@
 <script src="<?= BASE_URL; ?>js/bootstrap.min.js.map"></script>
 <script src="<?= BASE_URL; ?>js/script.js"></script>
 </body>
-
 </html>

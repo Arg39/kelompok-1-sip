@@ -26,8 +26,8 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-2"></i>Master Anggota</a></li>
             <li><a class="dropdown-item" href="<?= BASE_URL; ?>rak"><i class="bi bi-hdd-rack-fill me-2"></i>Master Lokasi Rak</a></li>
-            <li><a class="dropdown-item" href="<?= BASE_URL; ?>kategori"><i class="bi bi-journal-bookmark-fill me-2"></i>Master Kategori Buku</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-book-half me-2"></i>Master Buku</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL; ?>"><i class="bi bi-journal-bookmark-fill me-2"></i>Master Kategori Buku</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL; ?>buku"><i class="bi bi-book-half me-2"></i>Master Buku</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>

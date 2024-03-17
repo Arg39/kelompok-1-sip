@@ -15,6 +15,14 @@ class RakModel
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultAll();
     }
+
+    // getRakByKode
+    public function getRakByKode($kode)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE kode=:kode');
+        $this->db->bind('kode', $kode);
+        return $this->db->resultSingle();
+    }
     
     // tambahDataRak
     public function tambahDataRak($data)
@@ -27,12 +35,23 @@ class RakModel
         return $this->db->rowCount();
     }
 
-    // hapusDataRak
-    public function hapusDataRak($id)
+    // updateDataRak
+    public function updateDataRak($data)
     {
-        $query = "DELETE FROM rak WHERE id=:id";
+        $query = "UPDATE rak SET lokasi=:lokasi WHERE kode=:kode";
         $this->db->query($query);
-        $this->db->bind('id', $id);
+        $this->db->bind('kode', $data['kode']);
+        $this->db->bind('lokasi', $data['lokasi']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    // hapusDataRak
+    public function hapusDataRak($kode)
+    {
+        $query = "DELETE FROM rak WHERE kode=:kode";
+        $this->db->query($query);
+        $this->db->bind('kode', $kode);
         $this->db->execute();
         return $this->db->rowCount();
     }
