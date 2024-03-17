@@ -79,4 +79,13 @@ class BukuModel
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    // Search Data Buku
+    public function searchBuku($keyword)
+    {
+        $query = "SELECT * FROM buku WHERE judul LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultAll();
+    }
 }

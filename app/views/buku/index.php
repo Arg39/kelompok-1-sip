@@ -21,12 +21,12 @@
                 <h5 class="card-title">Data Buku</h5>
             </div>
             <div class="col-md-6 d-flex flex-column flex-md-row justify-content-md-end justify-content-center gap-3">
-                <form class="d-flex flex-column flex-lg-row justify-content-center gap-2" role="search">
-                    <input class="form-control-sm me-0" type="search" placeholder="Search Buku"
+                <div class="d-flex flex-column flex-lg-row justify-content-center gap-2" role="search">
+                    <input class="form-control-sm me-0 keyword" type="search" name="search" placeholder="Search Buku"
                         aria-label="Search Buku">
-                    <button class="btn btn-sm btn-success fw-semibold" type="submit"><i
+                    <button class="btn btn-sm btn-success fw-semibold search" type="button"><i
                             class="bi bi-search me-1"></i>Search</button>
-                </form>
+                </div>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#tambahModal"
                     class="btn btn-sm btn-primary fw-semibold"><i class="bi bi-plus-lg me-1"></i>Tambah
                     Buku</button>
@@ -36,7 +36,7 @@
 
     <!-- Card Body -->
     <div class="card-body">
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="row row-cols-1 row-cols-md-4 g-4 content">
             <?php foreach ($data['buku'] as $buku): ?>
                 <div class="col">
                     <div class="card h-100">

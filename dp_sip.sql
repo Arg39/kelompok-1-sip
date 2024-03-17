@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2024 at 01:33 PM
+-- Generation Time: Mar 17, 2024 at 02:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,6 +35,13 @@ CREATE TABLE `anggota` (
   `telp` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`id`, `nama`, `jenis_kelamin`, `alamat`, `telp`) VALUES
+(1, 'Haikal', 'Perempuan', 'Tirto', '097986');
+
 -- --------------------------------------------------------
 
 --
@@ -59,7 +66,9 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`id`, `judul`, `tahun_terbit`, `jumlah`, `isbn`, `pengarang`, `penerbit`, `id_kategori`, `kode_rak`, `gambar`) VALUES
-(6, 'Harry Potter', 2016, 12, '978-0-545-01022-1', 'J.K Rowling', 'Gramedia', 'BJKYQ', 'R002', '65f6e2fe304c2-harry-potter.jpg');
+(6, 'Harry Potter', 2016, 12, '978-0-545-01022-1', 'J.K Rowling', 'Gramedia', 'BJKYQ', 'R001', '65f6e2fe304c2-harry-potter.jpg'),
+(7, 'Naruto Shippuden', 2016, 45, '978-9-3354-5930-1', 'Masashi Kishimoto', 'Gramedia', 'BJKYQ', 'R002', '65f6e54a97c5f-naruto.jpeg'),
+(8, 'Harry Potter & Prisoner', 2020, 12, '978-0-7352-6590-5', 'J.K Rowling', 'Gramedia', 'BJKYQ', 'R003', '65f6ec2832ace-azkaban.jpeg');
 
 -- --------------------------------------------------------
 
@@ -129,7 +138,8 @@ CREATE TABLE `petugas` (
 
 INSERT INTO `petugas` (`id`, `username`, `password`, `nama`, `telp`, `alamat`, `role`) VALUES
 (1, 'admin', 'admin', 'admin', '08123456789', 'Surabaya', 'super_admin'),
-(2, 'sabina', 'sabina', 'Sabina', '089539140353', 'Brebes', 'user');
+(2, 'sabina', 'sabina', 'Sabina', '089539140353', 'Brebes', 'user'),
+(3, 'nasyath', 'faykar30', 'nasyath', '08808213786', 'Tirto', 'user');
 
 -- --------------------------------------------------------
 
@@ -147,9 +157,9 @@ CREATE TABLE `rak` (
 --
 
 INSERT INTO `rak` (`kode`, `lokasi`) VALUES
-('R001', 'Lantai 2'),
-('R002', 'Lantai 3'),
-('R003', 'Lantai 4');
+('R001', 'Rak Supernatural'),
+('R002', 'Rak Fantasy 1'),
+('R003', 'Rak Psychological');
 
 -- --------------------------------------------------------
 
@@ -249,13 +259,13 @@ ALTER TABLE `trans_pengembalian`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
@@ -273,7 +283,7 @@ ALTER TABLE `pengembalian`
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
