@@ -14,8 +14,6 @@
 <script src="<?= BASE_URL; ?>js/popper.min.js"></script>
 <script src="<?= BASE_URL; ?>js/bootstrap.min.js"></script>
 <script src="<?= BASE_URL; ?>js/bootstrap.min.js.map"></script>
-<!-- Custom script -->
 <script src="<?= BASE_URL; ?>js/script.js"></script>
 </body>
-
 </html>
