@@ -40,29 +40,34 @@
             <?php foreach ($data['buku'] as $buku): ?>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="<?= BASE_URL; ?>img/<?= $buku['gambar']; ?>" class="card-img-top" alt="..."
+                        <img src="<?= BASE_URL; ?>uploads/<?= $buku['gambar']; ?>" class="card-img-top" alt="..."
                             style="height: 194px; object-fit: cover; object-position: top;">
                         <div class="card-body">
-                            <h6 class="card-title"><?= $buku['judul']; ?></h6>
-                            <p class="card-text fs-6">Stok Buku : <?= $buku['jumlah']; ?></p>
+                            <h6 class="card-title">
+                                <?= $buku['judul']; ?>
+                            </h6>
+                            <p class="card-text fs-6">Stok Buku :
+                                <?= $buku['jumlah']; ?>
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <!-- detail button -->
-                                    <a href="<?= BASE_URL; ?>buku/detail/<?= $buku['id']; ?>" class="btn btn-sm btn-primary">
+                                    <a href="<?= BASE_URL; ?>buku/detail/<?= $buku['id']; ?>"
+                                        class="btn btn-sm btn-primary">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                     <a href="javascript:void(0)" class="btn btn-sm btn-warning edit_buku"
-                                        data-id="<?= $buku['id']; ?>" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">
+                                        data-id="<?= $buku['id']; ?>" data-bs-toggle="modal" data-bs-target="#editModal">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="<?= BASE_URL; ?>buku/delete/<?= $buku['id']; ?>"
-                                        class="btn btn-sm btn-danger"
+                                    <a href="<?= BASE_URL; ?>buku/delete/<?= $buku['id']; ?>" class="btn btn-sm btn-danger"
                                         onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
-                                <small class="text-muted ms-lg-1 ">Kode Buku : <span class="fw-semibold"><?= $buku['id']; ?></span>
+                                <small class="text-muted ms-lg-1 ">Kode Buku : <span class="fw-semibold">
+                                        <?= $buku['id']; ?>
+                                    </span>
                                 </small>
                             </div>
                         </div>
@@ -71,3 +76,6 @@
             <?php endforeach; ?>
         </div>
     </div>
+</div>
+<!-- Modal Tambah Data -->
+<?php include_once 'modalTambah.php' ?>
