@@ -2,6 +2,10 @@
 class Rak extends Controller
 {
     public function index() {
+        if (!isset($_SESSION['user'])) {
+            header("Location: " . BASE_URL . "login");
+            exit();
+        }
         $data = [
             'title' => 'Rak | Perpusku',
             'rak' => $this->model('RakModel')->getAllRak()

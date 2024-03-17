@@ -3,6 +3,10 @@ class Buku extends Controller
 {
     public function index()
     {
+        if (!isset($_SESSION['user'])) {
+            header("Location: " . BASE_URL . "login");
+            exit();
+        }
         $data = [
             'title' => 'Buku | Perpusku',
             'buku' => $this->model('BukuModel')->getAllBuku(),

@@ -1,6 +1,6 @@
 <?php
 
-class Trans_peminjaman extends Controller {
+class TransPeminjaman extends Controller {
     protected $db;
 
     public function __construct()
