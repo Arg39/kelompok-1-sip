@@ -140,4 +140,10 @@ class Buku extends Controller
             exit;
         }
     }
+
+    // Search Data Buku return json
+    public function search()
+    {
+        echo json_encode($this->model('BukuModel')->searchBuku($_POST['keyword']));
+    }
 }
