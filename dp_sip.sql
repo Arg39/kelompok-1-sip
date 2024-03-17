@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2024 at 11:14 AM
+-- Generation Time: Mar 17, 2024 at 01:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -53,6 +53,13 @@ CREATE TABLE `buku` (
   `kode_rak` varchar(10) NOT NULL,
   `gambar` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `buku`
+--
+
+INSERT INTO `buku` (`id`, `judul`, `tahun_terbit`, `jumlah`, `isbn`, `pengarang`, `penerbit`, `id_kategori`, `kode_rak`, `gambar`) VALUES
+(6, 'Harry Potter', 2016, 12, '978-0-545-01022-1', 'J.K Rowling', 'Gramedia', 'BJKYQ', 'R002', '65f6e2fe304c2-harry-potter.jpg');
 
 -- --------------------------------------------------------
 
@@ -248,7 +255,7 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
