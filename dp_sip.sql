@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2024 at 07:02 AM
+-- Generation Time: Mar 17, 2024 at 11:14 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,32 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `dp_sip`
 --
-CREATE DATABASE IF NOT EXISTS `dp_sip` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `dp_sip`;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anggota`
+-- Table structure for table `anggota`
 --
 
-CREATE TABLE IF NOT EXISTS `anggota` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `anggota` (
+  `id` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `jenis_kelamin` enum('Laki - Laki','Perempuan') NOT NULL,
   `alamat` tinytext NOT NULL,
-  `telp` varchar(12) NOT NULL,
-  PRIMARY KEY (`id`)
+  `telp` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Table structure for table `buku`
 --
 
-CREATE TABLE IF NOT EXISTS `buku` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `buku` (
+  `id` int(11) NOT NULL,
   `judul` varchar(128) NOT NULL,
   `tahun_terbit` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
@@ -54,21 +51,18 @@ CREATE TABLE IF NOT EXISTS `buku` (
   `penerbit` varchar(128) NOT NULL,
   `id_kategori` varchar(5) NOT NULL,
   `kode_rak` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `kode_rak` (`kode_rak`),
-  KEY `id_kategori` (`id_kategori`)
+  `gambar` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
-CREATE TABLE IF NOT EXISTS `kategori` (
+CREATE TABLE `kategori` (
   `id` varchar(5) NOT NULL,
-  `nama_kategori` varchar(25) NOT NULL,
-  PRIMARY KEY (`id`)
+  `nama_kategori` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -81,57 +75,49 @@ INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peminjaman`
+-- Table structure for table `peminjaman`
 --
 
-CREATE TABLE IF NOT EXISTS `peminjaman` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `peminjaman` (
+  `id` int(11) NOT NULL,
   `tanggal_pinjam` date NOT NULL,
   `tanggal_kembali` date NOT NULL,
   `anggota_id` int(11) NOT NULL,
-  `petugas_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `anggota_id` (`anggota_id`),
-  KEY `petugas_id` (`petugas_id`)
+  `petugas_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengembalian`
+-- Table structure for table `pengembalian`
 --
 
-CREATE TABLE IF NOT EXISTS `pengembalian` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pengembalian` (
+  `id` int(11) NOT NULL,
   `tanggal_pengembalian` date NOT NULL,
   `peminjaman_id` int(11) NOT NULL,
   `anggota_id` int(11) NOT NULL,
-  `petugas_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `peminjaman_id` (`peminjaman_id`),
-  KEY `anggota_id` (`anggota_id`),
-  KEY `petugas_id` (`petugas_id`)
+  `petugas_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `petugas`
+-- Table structure for table `petugas`
 --
 
-CREATE TABLE IF NOT EXISTS `petugas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `petugas` (
+  `id` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `telp` varchar(12) NOT NULL,
   `alamat` tinytext NOT NULL,
-  `role` enum('super_admin','user') NOT NULL,
-  PRIMARY KEY (`id`)
+  `role` enum('super_admin','user') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `petugas`
+-- Dumping data for table `petugas`
 --
 
 INSERT INTO `petugas` (`id`, `username`, `password`, `nama`, `telp`, `alamat`, `role`) VALUES
@@ -141,18 +127,16 @@ INSERT INTO `petugas` (`id`, `username`, `password`, `nama`, `telp`, `alamat`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rak`
+-- Table structure for table `rak`
 --
 
-CREATE TABLE IF NOT EXISTS `rak` (
+CREATE TABLE `rak` (
   `kode` varchar(10) NOT NULL,
-  `lokasi` tinytext NOT NULL,
-  PRIMARY KEY (`kode`),
-  UNIQUE KEY `lokasi` (`lokasi`) USING HASH
+  `lokasi` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `rak`
+-- Dumping data for table `rak`
 --
 
 INSERT INTO `rak` (`kode`, `lokasi`) VALUES
@@ -163,49 +147,147 @@ INSERT INTO `rak` (`kode`, `lokasi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `trans_peminjaman`
+-- Table structure for table `trans_peminjaman`
 --
 
-CREATE TABLE IF NOT EXISTS `trans_peminjaman` (
+CREATE TABLE `trans_peminjaman` (
   `id_peminjaman` int(11) NOT NULL,
-  `id_buku` int(11) NOT NULL,
-  KEY `id_peminjaman` (`id_peminjaman`),
-  KEY `id_buku` (`id_buku`)
+  `id_buku` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `trans_pengembalian`
+-- Table structure for table `trans_pengembalian`
 --
 
-CREATE TABLE IF NOT EXISTS `trans_pengembalian` (
+CREATE TABLE `trans_pengembalian` (
   `id_pengembalian` int(11) NOT NULL,
-  `id_buku` int(11) NOT NULL,
-  KEY `id_pengembalian` (`id_pengembalian`),
-  KEY `id_buku` (`id_buku`)
+  `id_buku` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Indexes for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `buku`
+-- Indexes for table `anggota`
+--
+ALTER TABLE `anggota`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `buku`
+--
+ALTER TABLE `buku`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kode_rak` (`kode_rak`),
+  ADD KEY `id_kategori` (`id_kategori`);
+
+--
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `anggota_id` (`anggota_id`),
+  ADD KEY `petugas_id` (`petugas_id`);
+
+--
+-- Indexes for table `pengembalian`
+--
+ALTER TABLE `pengembalian`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `peminjaman_id` (`peminjaman_id`),
+  ADD KEY `anggota_id` (`anggota_id`),
+  ADD KEY `petugas_id` (`petugas_id`);
+
+--
+-- Indexes for table `petugas`
+--
+ALTER TABLE `petugas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rak`
+--
+ALTER TABLE `rak`
+  ADD PRIMARY KEY (`kode`),
+  ADD UNIQUE KEY `lokasi` (`lokasi`) USING HASH;
+
+--
+-- Indexes for table `trans_peminjaman`
+--
+ALTER TABLE `trans_peminjaman`
+  ADD KEY `id_peminjaman` (`id_peminjaman`),
+  ADD KEY `id_buku` (`id_buku`);
+
+--
+-- Indexes for table `trans_pengembalian`
+--
+ALTER TABLE `trans_pengembalian`
+  ADD KEY `id_pengembalian` (`id_pengembalian`),
+  ADD KEY `id_buku` (`id_buku`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `anggota`
+--
+ALTER TABLE `anggota`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `buku`
+--
+ALTER TABLE `buku`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pengembalian`
+--
+ALTER TABLE `pengembalian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `petugas`
+--
+ALTER TABLE `petugas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `buku`
 --
 ALTER TABLE `buku`
   ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`kode_rak`) REFERENCES `rak` (`kode`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `peminjaman`
+-- Constraints for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`anggota_id`) REFERENCES `anggota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`petugas_id`) REFERENCES `petugas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pengembalian`
+-- Constraints for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`anggota_id`) REFERENCES `anggota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -213,14 +295,14 @@ ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_3` FOREIGN KEY (`petugas_id`) REFERENCES `petugas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `trans_peminjaman`
+-- Constraints for table `trans_peminjaman`
 --
 ALTER TABLE `trans_peminjaman`
   ADD CONSTRAINT `trans_peminjaman_ibfk_1` FOREIGN KEY (`id_peminjaman`) REFERENCES `peminjaman` (`id`),
   ADD CONSTRAINT `trans_peminjaman_ibfk_2` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `trans_pengembalian`
+-- Constraints for table `trans_pengembalian`
 --
 ALTER TABLE `trans_pengembalian`
   ADD CONSTRAINT `trans_pengembalian_ibfk_1` FOREIGN KEY (`id_pengembalian`) REFERENCES `pengembalian` (`id`),
