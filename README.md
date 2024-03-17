@@ -11,7 +11,7 @@ A team based mini project made with PHP MVC for assignment in MSIB 6 - PT Otak K
 
 ## Database design
 <!-- Add img in public/db-design.png -->
-![Database Design](./public/img/db-design.png)
+![Database](./public/img/db-design.png)
 
 ## Some Screenshots
 <!-- Add img in public/img/master-rak.png -->
