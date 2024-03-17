@@ -56,10 +56,10 @@
                                 <?= $row['tanggal_kembali']; ?>
                             </td>
                             <td>
-                                <?= $row['anggota_id']; ?>
+                                <?= $row['nama_anggota']; ?>
                             </td>
                             <td>
-                                <?= $row['petugas_id']; ?>
+                                <?= $row['nama_petugas']; ?>
                             </td>
                             <td>
                                 <a href="<?= BASE_URL; ?>peminjaman/hapus/<?= $row['id']; ?>"

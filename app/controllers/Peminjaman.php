@@ -48,8 +48,15 @@ class Peminjaman extends Controller {
 
     public function fromubah($id)
     {
-        $data['title'] = 'Ubah Data  Peminjaman';
-        $data['ubahdata'] = $this->model('PeminjamanModel')->ubah($id);
+        $data = [
+            'title' => 'Ubah Data Peminjaman',
+            'ubahdata' => $this->model('PeminjamanModel')->ubah($id),
+            'anggota' => $this->model('UserModel')->getAllUser(),
+            'petugas' => $this->model('UserModel')->getAllPetugas(),
+            'buku' => $this->model('BukuModel')->getAllBuku(),
+            'bukuDipinjam' => $this->model('TransPeminjamanModel')->getBukuDipinjam($id),
+        ];
+
         $this->view('templates/header', $data);
         $this->view('peminjaman/ubah_data', $data);
         $this->view('templates/footer');
