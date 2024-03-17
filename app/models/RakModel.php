@@ -35,7 +35,7 @@ class RakModel
         $kodeRak = $char . sprintf("%03s", $noUrut);
         return $kodeRak;
     }
-    
+
     // tambahDataRak
     public function tambahDataRak($data)
     {
@@ -57,12 +57,20 @@ class RakModel
     // updateDataRak
     public function updateDataRak($data)
     {
-        $query = "UPDATE rak SET lokasi=:lokasi WHERE kode=:kode";
-        $this->db->query($query);
-        $this->db->bind('kode', $data['kode']);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE lokasi=:lokasi AND kode!=:kode');
         $this->db->bind('lokasi', $data['lokasi']);
+        $this->db->bind('kode', $data['kode']);
         $this->db->execute();
-        return $this->db->rowCount();
+        if ($this->db->rowCount() > 0) {
+            return 0;
+        } else {
+            $query = "UPDATE rak SET lokasi=:lokasi WHERE kode=:kode";
+            $this->db->query($query);
+            $this->db->bind('kode', $data['kode']);
+            $this->db->bind('lokasi', $data['lokasi']);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
     }
 
     // hapusDataRak
