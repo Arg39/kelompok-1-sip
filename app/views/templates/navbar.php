@@ -31,7 +31,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-bookmark-heart-fill me-2"></i>Transaksi Peminjaman</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL; ?>peminjaman"><i class="bi bi-bookmark-heart-fill me-2"></i>Transaksi Peminjaman</a></li>
             <li><a class="dropdown-item" href="#"><i class="bi bi-bookmark-x-fill me-2"></i>Transaksi Pengembalian</a></li>
           </ul>
         </li>
