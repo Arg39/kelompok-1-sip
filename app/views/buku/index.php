@@ -37,36 +37,37 @@
     <!-- Card Body -->
     <div class="card-body">
         <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <img src="<?= BASE_URL; ?>img/naruto.jpg" class="card-img-top" alt="..."
-                        style="height: 194px; object-fit: cover; object-position: top;">
-                    <div class="card-body">
-                        <h6 class="card-title">Naruto Shippuden</h6>
-                        <p class="card-text fs-6">Stok Buku : </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex flex-column flex-md-row align-items-center">
+            <?php foreach ($data['buku'] as $buku): ?>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="<?= BASE_URL; ?>img/<?= $buku['gambar']; ?>" class="card-img-top" alt="..."
+                            style="height: 194px; object-fit: cover; object-position: top;">
+                        <div class="card-body">
+                            <h6 class="card-title"><?= $buku['judul']; ?></h6>
+                            <p class="card-text fs-6">Stok Buku : <?= $buku['jumlah']; ?></p>
+                            <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <!-- detail button -->
-                                    <a href="<?= BASE_URL; ?>buku/detail/B002" class="btn btn-sm btn-primary">
+                                    <a href="<?= BASE_URL; ?>buku/detail/<?= $buku['id']; ?>" class="btn btn-sm btn-primary">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                     <a href="javascript:void(0)" class="btn btn-sm btn-warning edit_buku"
-                                        data-kode="<?= $buku['kode']; ?>" data-bs-toggle="modal"
+                                        data-id="<?= $buku['id']; ?>" data-bs-toggle="modal"
                                         data-bs-target="#editModal">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="<?= BASE_URL; ?>buku/delete/<?= $buku['kode']; ?>"
+                                    <a href="<?= BASE_URL; ?>buku/delete/<?= $buku['id']; ?>"
                                         class="btn btn-sm btn-danger"
                                         onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
-                                <small class="text-muted ms-lg-1 ">Kode Buku : <span class="fw-semibold">B002</span> </small>
+                                <small class="text-muted ms-lg-1 ">Kode Buku : <span class="fw-semibold"><?= $buku['id']; ?></span>
+                                </small>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
