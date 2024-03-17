@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
@@ -26,7 +26,7 @@ USE `dp_sip`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `anggota`
+-- Struktur dari tabel `anggota`
 --
 
 CREATE TABLE IF NOT EXISTS `anggota` (
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `anggota` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buku`
+-- Struktur dari tabel `buku`
 --
 
 CREATE TABLE IF NOT EXISTS `buku` (
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `buku` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori` (
@@ -81,7 +81,7 @@ INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peminjaman`
+-- Struktur dari tabel `peminjaman`
 --
 
 CREATE TABLE IF NOT EXISTS `peminjaman` (
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `peminjaman` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengembalian`
+-- Struktur dari tabel `pengembalian`
 --
 
 CREATE TABLE IF NOT EXISTS `pengembalian` (
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `pengembalian` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `petugas`
+-- Struktur dari tabel `petugas`
 --
 
 CREATE TABLE IF NOT EXISTS `petugas` (
@@ -126,13 +126,21 @@ CREATE TABLE IF NOT EXISTS `petugas` (
   `nama` varchar(128) NOT NULL,
   `telp` varchar(12) NOT NULL,
   `alamat` tinytext NOT NULL,
-  PRIMARY KEY (`id`)
+  `role` enum('super_admin','user') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `petugas`
+--
+
+INSERT INTO `petugas` (`id`, `username`, `password`, `nama`, `telp`, `alamat`, `role`) VALUES
+(1, 'admin', 'admin', 'admin', '08123456789', 'Surabaya', 'super_admin'),
+(2, 'sabina', 'sabina', 'Sabina', '089539140353', 'Brebes', 'user');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rak`
+-- Struktur dari tabel `rak`
 --
 
 CREATE TABLE IF NOT EXISTS `rak` (
@@ -143,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `rak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `rak`
+-- Dumping data untuk tabel `rak`
 --
 
 INSERT INTO `rak` (`kode`, `lokasi`) VALUES
@@ -154,7 +162,7 @@ INSERT INTO `rak` (`kode`, `lokasi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trans_peminjaman`
+-- Struktur dari tabel `trans_peminjaman`
 --
 
 CREATE TABLE IF NOT EXISTS `trans_peminjaman` (
@@ -167,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `trans_peminjaman` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trans_pengembalian`
+-- Struktur dari tabel `trans_pengembalian`
 --
 
 CREATE TABLE IF NOT EXISTS `trans_pengembalian` (
@@ -178,25 +186,25 @@ CREATE TABLE IF NOT EXISTS `trans_pengembalian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `buku`
+-- Ketidakleluasaan untuk tabel `buku`
 --
 ALTER TABLE `buku`
   ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`kode_rak`) REFERENCES `rak` (`kode`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `peminjaman`
+-- Ketidakleluasaan untuk tabel `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`anggota_id`) REFERENCES `anggota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`petugas_id`) REFERENCES `petugas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pengembalian`
+-- Ketidakleluasaan untuk tabel `pengembalian`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`anggota_id`) REFERENCES `anggota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -204,14 +212,14 @@ ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_3` FOREIGN KEY (`petugas_id`) REFERENCES `petugas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `trans_peminjaman`
+-- Ketidakleluasaan untuk tabel `trans_peminjaman`
 --
 ALTER TABLE `trans_peminjaman`
   ADD CONSTRAINT `trans_peminjaman_ibfk_1` FOREIGN KEY (`id_peminjaman`) REFERENCES `peminjaman` (`id`),
   ADD CONSTRAINT `trans_peminjaman_ibfk_2` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`);
 
 --
--- Constraints for table `trans_pengembalian`
+-- Ketidakleluasaan untuk tabel `trans_pengembalian`
 --
 ALTER TABLE `trans_pengembalian`
   ADD CONSTRAINT `trans_pengembalian_ibfk_1` FOREIGN KEY (`id_pengembalian`) REFERENCES `pengembalian` (`id`),
