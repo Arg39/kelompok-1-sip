@@ -43,7 +43,7 @@
 <?= $this->flash->getFlashMessage(); ?>
     <?php foreach ($data['kategori'] as $kategori) : ?>
         <div class="col-md-4 mb-3">
-            <div class="card h-100">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body m-2">
                     <h5 class="card-title"><a href="#" class="link-body-emphasis link-underline-opacity-0 icon-link icon-link-hover"><?= $kategori['nama_kategori']; ?><i class="bi bi-box-arrow-in-right"></i></a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">ID: <?= $kategori['id']; ?></h6>
