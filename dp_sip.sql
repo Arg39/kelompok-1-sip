@@ -126,7 +126,8 @@ CREATE TABLE IF NOT EXISTS `petugas` (
   `nama` varchar(128) NOT NULL,
   `telp` varchar(12) NOT NULL,
   `alamat` tinytext NOT NULL,
-  `role` enum('super_admin','user') NOT NULL
+  `role` enum('super_admin','user') NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
