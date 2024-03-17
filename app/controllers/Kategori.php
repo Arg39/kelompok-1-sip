@@ -3,7 +3,7 @@ class Kategori extends Controller
 {
     public function index() {
         $data = [
-            'title' => 'Kategori',
+            'title' => 'Kategori | Perpusku',
             'kategori' => $this->model('KategoriModel')->getCategory()
         ];
 
@@ -50,7 +50,7 @@ class Kategori extends Controller
             $this->flash->setFlashMessage('gagal', 'diubah', 'danger');
             header('Location: ' . BASE_URL . 'kategori');
             exit;
-        } 
+        }
     }
 
     public function cari() {

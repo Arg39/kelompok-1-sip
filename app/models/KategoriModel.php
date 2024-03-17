@@ -25,7 +25,7 @@
             } while ($existingId);
         
             return $id;
-        }        
+        }
 
         public function buatKategori($data) {
             $id = $this->generateId();
@@ -62,7 +62,7 @@
             $this->db->execute();
         
             return $this->db->rowCount();
-        }        
+        }
 
         public function cariKategori() {
             $keyword = $_POST['keyword'];
@@ -73,4 +73,3 @@
         }
 
     }
-?>

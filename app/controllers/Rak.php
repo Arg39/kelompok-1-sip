@@ -14,7 +14,8 @@ class Rak extends Controller
     // Tambah Data Rak Buku
     public function tambah() {
         $data = [
-            'kode' => $_POST['kode'],
+            // Get kode from RakModel with generateKodeRak method
+            'kode' => $this->model('RakModel')->generateKodeRak(),
             'lokasi' => $_POST['lokasi']
         ];
         if ($this->model('RakModel')->tambahDataRak($data) > 0) {
@@ -22,7 +23,7 @@ class Rak extends Controller
             header('Location: ' . BASE_URL . 'rak');
             exit;
         } else {
-            $this->flash->setFlashMessage('gagal', 'ditambahkan', 'danger');
+            $this->flash->setFlashMessage('gagal', 'ditambahkan karena lokasi sudah tersedia', 'danger');
             header('Location: ' . BASE_URL . 'rak');
             exit;
         }
