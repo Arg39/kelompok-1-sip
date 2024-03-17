@@ -11,7 +11,7 @@ class Trans_peminjaman extends Controller {
     public function fromdetail($id)
     {
         $data['title'] = 'detail Data  Peminjaman';
-        $data['detaildata'] = $this->model('Buku_model')->getDetailPeminjaman($id);
+        $data['detaildata'] = $this->model('TransPeminjamanModel')->getDetailPeminjaman($id);
         $this->view('templates/header', $data);
         $this->view('peminjaman/detail', $data);
         $this->view('templates/footer');

@@ -1,5 +1,5 @@
 <?php
-class Buku_model {
+class TransPeminjamanModel {
     private $table = 'trans_peminjaman';
     private $db ;
 
