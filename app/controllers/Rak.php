@@ -58,7 +58,7 @@ class Rak extends Controller
             header('Location: ' . BASE_URL . 'rak');
             exit;
         } else {
-            $this->flash->setFlashMessage('gagal', 'diubah', 'danger');
+            $this->flash->setFlashMessage('gagal', 'diubah karena lokasi sudah tersedia', 'danger');
             header('Location: ' . BASE_URL . 'rak');
             exit;
         }

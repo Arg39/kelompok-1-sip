@@ -1,3 +1,16 @@
+// Make image preview in modalTambah buku when upload image
+function previewImage() {
+  const cover = document.querySelector("#gambar");
+  const imgPreview = document.querySelector("#preview");
+
+  const fileCover = new FileReader();
+  fileCover.readAsDataURL(cover.files[0]);
+
+  fileCover.onload = function (e) {
+    imgPreview.src = e.target.result;
+  }
+}
+
 $(document).ready(function () {
   // Display data in modal when clicked edit in data rak
   $(document).on("click", ".edit_rak", function () {
