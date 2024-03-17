@@ -2,12 +2,11 @@ $(document).ready(function () {
   // Display data in modal when clicked edit in data rak
   $(document).on("click", ".edit_rak", function () {
     let kode = $(this).data("kode");
-    let base_url = "http://localhost:8000/";
     $.ajax({
       method: "post",
       datatype: "json",
       data: { kode: kode },
-      url: base_url + "rak/edit",
+      url: BASE_URL + "rak/edit",
       success: function (response) {
         let data = JSON.parse(response);
         $(".kode").val(data.kode);
@@ -17,9 +16,7 @@ $(document).ready(function () {
         console.log(response);
       },
     });
-  });
-    
-    
+  });    
 });
 
 // Display data in modal when clicked edit in data kategori
@@ -50,8 +47,6 @@ $(function() {
                 $('#id').val(data.id);
                 $('#nama_kategori').val(data.nama_kategori);
             }
-        });
-        
+        }); 
     });
-
 });
